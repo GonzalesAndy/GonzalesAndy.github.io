@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>TutiFruiti</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar" class="navbar">
+            <div class="navbar-left">
+                <a href="/" class="link-main">
+                    <div h="full" class="hover-underline-animation">                        
+                        Explorer
+                    </div>
+                </a>
+                <a href="/" class="link-main">
+                    <div h="full" class="hover-underline-animation">                        
+                        Mes favoris
+                    </div>
+                </a>
+            </div>
+            <div class="navbar-center">
+                <img src="assets/logo.png" alt="TutiFruiti Logo">
+                <span>TuttiFrutti</span>
+            </div>
+            <div class="navbar-right">
+                <input  type="text" placeholder="Recherche">
+                <img src="assets/account.png" alt="">
+            </div>
+        </nav>
+        
+        <div id="no-navbar-menu" class="no-navbar-menu">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+            <p>Menu</p>
+        </div>
+    </header>
+    <main>
+        <h1>“Bienvenue sur TuttiFrutti. J'espère que vous passerait un délicieux moment„</h1>
+        <div>
+            <img id="fruit" value="2" class="banane" src="assets/banane.png" alt="banane">
+            <img id="fruit" value="4" class="pomme" src="assets/pomme.png" alt="pomme">
+            <img id="fruit" value="4" class="grenade" src="assets/grenade.png" alt="grenade">
+            <img id="fruit" value="2" class="mure" src="assets/mure.png" alt="mure">
+        </div>
+    </main>
+    <script>
+        let prevScrollPos = window.pageYOffset;
+
+        menuNoNavbar = document.getElementById("no-navbar-menu");
+        menuNoNavbar.style.display = "none";
+
+        menuNoNavbar.onclick = function(){
+            document.getElementById("navbar").classList.remove("hide");
+            menuNoNavbar.style.display="none";
+        };
+        /*window.onscroll = function () {
+            const currentScrollPos = window.pageYOffset;
+
+            if (currentScrollPos === 0 && document.getElementById("navbar").classList.contains("hide")) {
+                document.getElementById("navbar").classList.remove("hide");
+                menuNoNavbar.style.display="none";
+            } else {
+                document.getElementById("navbar").classList.add("hide");
+                menuNoNavbar.style.display="flex";
+            }
+        };*/
+
+        document.addEventListener("mousemove", parallax);
+        function parallax(event) {
+        this.querySelectorAll("#fruit").forEach((shift) => {
+            const position = shift.getAttribute("value");
+            const x = (window.innerWidth - event.pageX * position) / 90;
+            const y = (window.innerHeight - event.pageY * position) / 90;
+
+            shift.style.transform = `translateX(${x}px) translateY(${y}px)`;
+        });
+        }
+    </script>
+
+</body>
+</html>
